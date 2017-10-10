@@ -1,0 +1,25 @@
+Details:
+<div class="style">
+  <%= "Name: " %><%= @restaurant.name %><br>
+  <%= "Address: " %><%= @restaurant.address %>, <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.postal_code %>
+  <%= "Tel: " %><%= @restaurant.telephone %><br>
+  <%= "Website: " %><%= @restaurant.email %><br>
+  <%= "Cuisine: " %><%= @restaurant.cuisine %><br>
+  <%= "Price: " %><%= @restaurant.price %><br>
+  <%= "Rating: " %><%= @restaurant.rating %><br>
+</div>
+
+<div class="map-container">
+  <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIqC-bc9xmsEKiCnSyo32DAgj9ZVb-1G4
+    &q=<%= @restaurant.address %>,<%= @restaurant.name %>,<%= @restaurant.city %>+<%= @restaurant.state %>" allowfullscreen>
+</iframe>
+</div>
+
+<div class="style">
+  <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+  <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you certain you want to delete this?"} %>
+</div>

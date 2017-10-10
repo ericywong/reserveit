@@ -1,0 +1,47 @@
+<div class="style">
+<table>
+<% for restaurant in @restaurants %>
+<tr>
+  <td>
+    <%= "Name: " %>
+    <%= restaurant.name %>
+  </td>
+  <td>
+    <%= "Address: " %>
+    <%= restaurant.address %>, <%= restaurant.city %>, <%= restaurant.state %> <%= restaurant.postal_code %>
+  </td>
+  <td>
+    <%= "Tel: " %>
+    <%= restaurant.telephone %>
+  </td>
+  <td>
+    <%= "Website: " %>
+    <%= link_to restaurant.email, restaurant.email  %>
+  </td>
+  <td>
+    <%= "Cuisine: " %>
+    <%= restaurant.cuisine %>
+  </td>
+  <td>
+    <%= "Price: " %>
+    <%= restaurant.price %>
+  </td>
+  <td>
+    <%= "Rating: " %>
+    <%= restaurant.rating %>
+  </td>
+  <td>
+    <%= link_to "Details", restaurant_path(restaurant) %>
+  </td>
+  <td>
+    <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+  </td>
+  <td>
+    <%= link_to "Delete", restaurant_path(restaurant), method: :delete, data: {confirm: "Are you certain you want to delete this?"} %>
+  </td>
+</tr>
+<% end %>
+</table>
+</div>
+
+<%= link_to "Add Restaurant", new_restaurant_path %>

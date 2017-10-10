@@ -1,0 +1,35 @@
+<%= form_for(@restaurant) do %>
+  <div class="field">
+    <%= label_tag(:name, "Name") %>
+    <%= text_field_tag(:name, @restaurant.name) %>
+    <br><br>
+    <%= label_tag(:address, "Address") %>
+    <%= text_field_tag(:address, @restaurant.address) %>
+    <br><br>
+    <%= label_tag(:city, "City") %>
+    <%= text_field_tag(:city, @restaurant.city) %>
+    <br><br>
+    <%= label_tag(:state, 'State (ie: "MA")') %>
+    <%= text_field_tag(:state, @restaurant.state) %>
+    <br><br>
+    <%= label_tag(:postal_code, "Zip code") %>
+    <%= text_field_tag(:postal_code, @restaurant.postal_code) %>
+    <br><br>
+    <%= label_tag(:telepone, "Tel:") %>
+    <%= text_field_tag(:telephone, @restaurant.telephone) %>
+    <br><br>
+    <%= label_tag(:email, "Website: ") %>
+    <%= text_field_tag(:email, @restaurant.email) %>
+    <br><br>
+    <%= label_tag(:cuisine, "Cuisine") %>
+    <%= text_field_tag(:cuisine, @restaurant.cuisine) %>
+    <br><br>
+    <%= label_tag(:price, "Price") %>
+    <%= text_field_tag(:price, @restaurant.price) %>
+    <br><br>
+    <%= label_tag(:rating, "Rating") %>
+    <%= text_field_tag(:rating, @restaurant.rating) %>
+    <br><br>
+    <%= submit_tag("Click this button to submit form") %>
+  </div>
+<% end %>
