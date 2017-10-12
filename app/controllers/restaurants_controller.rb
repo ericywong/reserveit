@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
 before_action :find_restaurant, only: [:show, :destroy, :edit, :update]
+before_action :authenticate_owner!, except: [:index]
+before_action :validate_owner, only: [:edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -14,6 +16,7 @@ before_action :find_restaurant, only: [:show, :destroy, :edit, :update]
     city: params[:city], state: params[:state], postal_code: params[:postal_code],
     telephone: params[:telephone], email: params[:email], cuisine: params[:cuisine],
     rating: params[:rating], price: params[:price])
+    @restaurant.owner = current_owner
     @restaurant.save
     redirect_to restaurants_path
   end
@@ -44,4 +47,10 @@ before_action :find_restaurant, only: [:show, :destroy, :edit, :update]
     @restaurant = Restaurant.find(params[:id])
   end
 
+
+  def validate_owner
+    unless current_owner && @restaurant.owner == current_owner
+      redirect_to restaurant_url, notice:'You can\'t edit that painting!'
+    end
+  end
 end

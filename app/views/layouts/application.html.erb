@@ -3,12 +3,20 @@
   <head>
     <title>Reserveit</title>
     <%= csrf_meta_tags %>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="session-link">
+      <% if current_owner %>
+          <%= link_to "Sign Out", destroy_owner_session_path, method: :delete %>
+      <% else %>
+          <%= link_to "Sign In", new_owner_session_path %>
+      <% end %>
+    </div>
+    <br>
     <%= yield %>
   </body>
 </html>
