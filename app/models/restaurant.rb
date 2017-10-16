@@ -4,11 +4,12 @@ class Restaurant < ApplicationRecord
   # validates :postal_code, presence: true
 
   belongs_to :owner
+  has_many :reservations
 
   def owner_is? owner
     return owner && owner == self.owner
   end
-  
+
   geocoded_by :address
   after_validation :geocode
   # maybe will need bottom code for updating address

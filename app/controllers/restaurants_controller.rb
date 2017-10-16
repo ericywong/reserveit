@@ -34,6 +34,7 @@ before_action :validate_owner, only: [:edit, :update, :destroy]
   end
 
   def show
+    @reservations = Reservation.where(restaurant: @restaurant)
   end
 
   def destroy

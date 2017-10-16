@@ -20,6 +20,29 @@ Details:
 </div>
 
 <div class="style">
+  <p>
+   <%= link_to "Add Reservation", new_restaurant_reservation_path(restaurant_id: @restaurant) %>
+  </p>
+
+  <% for reservation in @reservations do %>
+  <table>
+    <tr>
+      <td>Party Name</td>
+      <td>No. of People</td>
+      <td>Phone Number</td>
+    </tr>
+  </table>
+      <table>
+        <tr>
+          <td><%=reservation.party_name%></td>
+          <td><%=reservation.num_people%></td>
+          <td><%=reservation.telephone%></td>
+        </tr>
+      </table>
+  <% end %>
+</div>
+
+<div class="style">
   <% if @restaurant.owner_is? current_owner %>
       <%= link_to "Edit", edit_restaurant_path(@restaurant) %>
       <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you certain you want to delete this?"} %>

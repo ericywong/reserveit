@@ -1,0 +1,33 @@
+<%= form_for([@restaurant, reservation], local: true) do |form| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this painting from being saved:</h2>
+
+      <ul>
+      <% restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Party_Name %>
+    <%= form.text_field :party_name, id: :reservation_party_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Number_of_people %>
+    <%= form.text_field :num_people, id: :reservation_num_people %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Telephone %>
+    <%= form.text_field :telephone, id: :reservation_telephone %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
